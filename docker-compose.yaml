@@ -48,3 +48,13 @@ services:
       - ./Nginx/logs:/var/log/nginx
     ports:
       - "8080:80"
+
+  react_front:
+    build: ReactFront
+    ports:
+      - "${REACT_FRONT_PORT}:3000"
+    volumes:
+      - /usr/app/node_modules
+      - ./ReactFront:/usr/app
+    env_file:
+      - .env
